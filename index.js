@@ -22,11 +22,7 @@ connectDB();
 app.use(cors({origin:true, credentials:true}));
 
 //-------------mount API Routes-------------------
-app.use(function (req, res, next) {
-  // console.log(`${req.ip} :: ${req.headers['user-agent']} accessed api :: time: + ${moment().format("DD MMM,YY")} + accessed: ${req.method} + --> ${req.url.toString()}`);
-  console.log(`# ${moment().format("MMMM Do YYYY, h:mm:ss a")} || ${req.method}-> ${req.url.toString()}`);
-  next();
-});
+
 app.use('/api/v1/', require('./router/v1_Routes'));
 
 app.route('/*').all(errorHandling.notFoundError);

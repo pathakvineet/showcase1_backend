@@ -116,8 +116,8 @@ async function getWeatherReport(req, res) {
 
 
 
-    if (!req.query.lat) return;
-    if (!req.query.lon) return;
+    if (!req.query.lat) return res.status(400).json({status:400, message:'location not provided'});
+    if (!req.query.lon) return res.status(400).json({status:400, message:'location not provided'});
 
     let weatherData = await axios.get('http://api.openweathermap.org/data/2.5/weather', {
         params: {
